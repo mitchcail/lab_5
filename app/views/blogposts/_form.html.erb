@@ -1,27 +1,40 @@
-<%= form_for(@blogpost) do |f| %>
-  <% if @blogpost.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@blogpost.errors.count, "error") %> prohibited this blogpost from being saved:</h2>
+<div class= "container">
+  <div class="row">
+    <%= form_for(@blogpost) do |f| %>
+      <% if @blogpost.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@blogpost.errors.count, "error") %> prohibited this blogpost from being saved:</h2>
 
-      <ul>
-      <% @blogpost.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% @blogpost.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+      
+     <div class="input-group col-md-4">
+        
+          <%= f.label :title, class: "input-group-addon" %>
+          <%= f.text_field :title, class: "form-control" %>
+
+      </div>
+    </br>
+      <div class="input-group col-md-4">
+        <%= f.label :contents, class: "input-group-addon" %>
+        <%= f.text_area :contents, class: "form-control" %>
+
+      </div>
+          </br>
+      <div >
+        <%= f.submit "submit", class: "btn btn-default" %>
+      </div>
+      <br>
+  <br>
+
+    <% end %>
+    <div id="unknown_words">
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :contents %><br>
-    <%= f.text_area :contents %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-<div id="unknown_words">
 </div>
